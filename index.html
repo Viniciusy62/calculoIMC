@@ -16,11 +16,16 @@
   <main class="container">
     <section class="card">
       <h1>Cálculo de IMC</h1>
-      <label for="weight">Peso (kg)</label>
-      <input type="number" id="weight">
-      <label for="height">Altura (m)</label>
-      <input type="number" id="height">
-      <input type="submit" value="Calcular IMC">
+      
+      <form>
+        <label for="weight">Peso (kg)
+        <input type="number" id="weight" placeholder="60">
+      </label>
+        <label for="height">Altura (cm)
+        <input type="number" id="height" placeholder="165">
+      </label>
+        <input type="submit" value="Calcular IMC">
+      </form>
     </section>
   </main>
   <script src="./main.js"></script>
