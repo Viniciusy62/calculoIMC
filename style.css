@@ -9,29 +9,28 @@
 }
 
 body {
-  font-size: 1.6rem;
   background: #040924;
-  position: relative;
 }
 
 body,
-input {
+input, button {
   font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
 }
 
 .container {
+  width: 100%;
   display: grid;
   place-content: center;
   height: 100vh;
-  position: relative;
 }
 
 .card {
   margin-inline: auto;
-  padding: 4.8rem 6.4rem 6.4rem;
-  width: min(42.8rem, 90%);
+  padding: 4.8rem 2.4rem 6.4rem;
+  width: min(42.8rem, 95%);
   background: #fff;
-  box-shadow: 0rem 0.2rem 0.4rem 0rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.2rem 0.4rem 0rem #0000001a;
   border-radius: 0.6rem;
 }
 
@@ -49,46 +48,42 @@ label {
   font-weight: 400;
 }
 
-input[type="number"] {
+input {
   margin: 0.8rem auto 1.6rem;
   padding: 1.6rem;
-  width: 30rem;
+  width: 100%;
   font-size: 1.6rem;
   font-weight: 400;
   color: #212529;
-  border: .1rem solid rgba(73, 80, 87, 0.30);
-  border-radius: .4rem;
+  border: 0.1rem solid #4950574d;
+  border-radius: 0.4rem;
   background-color: #dce2e9;
 }
 
-input[type="number"]:focus {
+input:focus {
   background-color: #e9eef5;
+  outline: 2px solid #4950574d;
 }
 
 input::placeholder {
-  color: rgba(73, 80, 87, 0.5);
+  color: #49505780;
 }
 
-input[type="submit"] {
+#btn-IMC {
+  margin-top: 1.6rem;
   padding: 1.6rem;
-  width: 30rem;
-  font-size: 1.6rem;
+  width: 100%;
   font-weight: 700;
   color: #fff;
-  border-radius: .4rem;
-  border: .1rem solid #02799d;
-  background: #02799d
-              url(./assets/arrow-up-right.svg)
-              no-repeat
-              20rem;
+  border-radius: 0.4rem;
+  border: none;
+  background: #02799d;
   cursor: pointer;
+  transition: background 0.5s;
 }
 
-input[type="submit"]:hover {
-  background: #24829e
-              url(./assets/arrow-up-right.svg)
-              no-repeat
-              20rem;
+#btn-IMC:hover {
+  background: #105f77;
 }
 
 #info {
@@ -96,27 +91,27 @@ input[type="submit"]:hover {
   padding: 4.8rem 6.4rem 3.2rem;
   width: min(36.3rem, 90%);
   background: #fff;
-  box-shadow: 0rem 0.2rem 0.4rem 0rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.2rem 0.4rem 0rem #0000001a;
   border-radius: 0.6rem;
   text-align: center;
   position: relative;
   top: -27rem;
   position: relative;
-  /* display: none; */
+  display: none;
 }
 
 #btn-close {
   position: absolute;
-  top: .5rem;
-  right: .5rem;
+  top: 0.5rem;
+  right: 0.5rem;
   cursor: pointer;
 }
 
 #error {
-  padding: .8rem 0;
+  padding: 0.8rem 0;
   width: 100%;
   height: 3.6rem;
-  background: #F03E3E;
+  background: #f03e3e;
   position: fixed;
   text-align: center;
   display: none;
