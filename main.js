@@ -1,31 +1,53 @@
 const btnIMC = document.querySelector("#btn-IMC");
-const btnClose = document.querySelector("#btn-close")
+const btnClose = document.querySelector("#btn-close");
+const weight = document.querySelector("#weight");
+const height = document.querySelector("#height");
+const errorMsg = document.querySelector(".error");
 
-function calcIMC(weight, height) {
-  weight = document.querySelector("#weight")
-  height = document.querySelector("#height")
-  let calc = parseInt(weight.value / ((height.value / 100) ** 2))
+function validate(e) {
+  const value = e.target.value
+
+  if(isNaN(value)) {
+    errorMsg.classList.add("open");
+  } else {
+    errorMsg.classList.remove("open");
+  }
+}
+
+weight.addEventListener("input", validate)
+height.addEventListener("input", validate)
+
+function calcIMC() {
+  let calc = parseInt(weight.value / (height.value / 100) ** 2);
   
-  return calc
+  return calc;
 }
 
-function error() {
-  console.log("Error")
-}
 
 function closeScreen() {
-  
-  console.log("Fechar tela")
+  const modalAlertClose = document.querySelector(".modal-wrapper");
+  modalAlertClose.classList.remove("open");
 }
+
 
 function alertIMC(e) {
-  e.preventDefault()
+  e.preventDefault();
 
-  const result = document.querySelector("#info")
-  result.style.display = "block"
-  
-  return result.innerHTML = `<h1>Seu IMC é de ${calcIMC()}</h1>`
+  const modalAlert = document.querySelector(".modal-wrapper");
+  const result = document.querySelector("#result");
+
+  if(isNaN(calcIMC())) {
+    errorMsg.classList.add("open");
+  } else {
+    errorMsg.classList.remove("open");
+
+    modalAlert.classList.add("open");
+    result.innerHTML = `<h1>Seu IMC é de ${calcIMC()}</h1>`;
+    console.log(calcIMC())
+  }
+  weight.value = ""
+  height.value = ""
 }
 
-btnIMC.addEventListener("click", alertIMC)
-btnClose.addEventListener("click", closeScreen)
+btnIMC.addEventListener("click", alertIMC);
+btnClose.addEventListener("click", closeScreen);
