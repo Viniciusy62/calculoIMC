@@ -1,23 +1,10 @@
+import { Modal } from './modal.js';
+
 const btnIMC = document.querySelector("#btn-IMC");
-const btnClose = document.querySelector("#btn-close");
+
 const weight = document.querySelector("#weight");
 const height = document.querySelector("#height");
 const errorMsg = document.querySelector(".error");
-
-
-// Object Literal
-const Modal = {
-  alertClose: document.querySelector(".modal-wrapper"),
-  alert: document.querySelector(".modal-wrapper"),
-  result: document.querySelector("#result"),
-
-  open() {
-    Modal.alert.classList.add("open");
-  },
-  close() {
-    Modal.alertClose.classList.remove("open");
-  }
-}
 
 function validate(e) {
   const value = e.target.value
@@ -38,12 +25,6 @@ function calcIMC() {
   return calc;
 }
 
-
-function closeScreen() {
-  Modal.close()
-}
-
-
 function alertIMC(e) {
   e.preventDefault();
 
@@ -60,4 +41,4 @@ function alertIMC(e) {
 }
 
 btnIMC.addEventListener("click", alertIMC);
-btnClose.addEventListener("click", closeScreen);
+
