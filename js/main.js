@@ -34,7 +34,7 @@ function alertIMC(e) {
     errorMsg.classList.remove("open");
 
     Modal.open()
-    Modal.result.innerHTML = `<h1>Seu IMC é de ${calcIMC()}</h1>`;
+    Modal.result.textContent = `Seu IMC é de ${calcIMC()}`;
   }
   weight.value = ""
   height.value = ""

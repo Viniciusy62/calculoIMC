@@ -11,15 +11,14 @@ const Modal = {
   },
   close() {
     Modal.alertClose.classList.remove("open");
+  },
+  closeKeydown: (event) => {
+    if(event.key  === "Escape") {
+      Modal.close();
+    }
   }
 }
 
 Modal.btnClose.addEventListener("click", Modal.close);
 
-window.addEventListener("keydown", closeKeydown)
-
-function closeKeydown(event) {
-  if(event.key  === "Escape") {
-    Modal.close();
-  }
-}
+window.addEventListener("keydown", Modal.closeKeydown)
