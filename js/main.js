@@ -3,31 +3,45 @@ import { AlertError } from "./alert-error.js";
 
 const btnIMC = document.querySelector("#btn-IMC");
 
-const weight = document.querySelector("#weight");
-const height = document.querySelector("#height");
+const inputWeight = document.querySelector("#weight");
+const inputHeight = document.querySelector("#height");
 
-weight.addEventListener("input", AlertError.validate);
-height.addEventListener("input", AlertError.validate);
+inputWeight.addEventListener("input", AlertError.validate);
+inputHeight.addEventListener("input", AlertError.validate);
 
-function calcIMC() {
-  let calc = (weight.value / (height.value / 100) ** 2).toFixed(2);
+function calcIMC(weight, height) {
+  return (weight / (height / 100) ** 2).toFixed(2);
+}
 
-  return calc;
+function notNumber(value) {
+  return isNaN(value) || value == ""
 }
 
 function alertIMC(e) {
   e.preventDefault();
 
-  if (isNaN(calcIMC()) || calcIMC() < 0) {
-    AlertError.open();
-  } else {
-    AlertError.close();
+  const weight = inputWeight.value
+  const height = inputHeight.value
 
+  const showAlertError = notNumber(weight) || notNumber(height)
+
+  const calc = calcIMC(weight, height)
+
+  if (showAlertError) {
+    AlertError.open();
+    
+    inputWeight.value = "";
+    inputHeight.value = "";
+    
+    return;
+  } 
+    AlertError.close();
+    
     Modal.open();
-    Modal.result.textContent = `Seu IMC é de ${calcIMC()}`;
-  }
-  weight.value = "";
-  height.value = "";
+    Modal.result.textContent = `Seu IMC é de ${calc}`;
+    
+    inputWeight.value = "";
+    inputHeight.value = "";  
 }
 
 btnIMC.addEventListener("click", alertIMC);
