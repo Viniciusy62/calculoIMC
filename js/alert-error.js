@@ -1,5 +1,5 @@
 export { AlertError }
-
+// Object Literal
 const AlertError = {
   errorMsg: document.querySelector(".error"),
   open() {
